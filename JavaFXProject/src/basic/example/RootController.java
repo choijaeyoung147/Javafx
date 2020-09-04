@@ -240,7 +240,7 @@ public class RootController implements Initializable {
 		Stage stage = new Stage(StageStyle.UTILITY);
 		stage.initModality(Modality.WINDOW_MODAL);
 		stage.initOwner(primaryStage);
-
+		tableView.setItems(getStulist());
 		try {
 			Parent chart = FXMLLoader.load(getClass().getResource("BarChart.fxml"));
 			Scene scene = new Scene(chart);
@@ -250,7 +250,7 @@ public class RootController implements Initializable {
 			// 컨트롤러로 연결이 안되어 있을때는 룩업 써서 가져온다!
 			Button btnClose = (Button) chart.lookup("#btnClose");
 			btnClose.setOnAction(new EventHandler<ActionEvent>() {
-
+				
 				@Override
 				public void handle(ActionEvent event) {
 					// TODO Auto-generated method stub
@@ -321,6 +321,7 @@ public class RootController implements Initializable {
 							Integer.parseInt(txtEnglish.getText()));
 					list.add(student);
 					insertStulist(student);
+					tableView.setItems(getStulist());
 					stage.close();
 
 				}
